@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:skymood/Utils/colors.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -42,9 +43,16 @@ class _SplashScreenState extends State<SplashScreen> {
           ),
           Padding(padding: EdgeInsets.only(top: 30), child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: 
+                backgroundColor: buttonColor,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                )
               ),
-              onPressed: (){}, child: Text("Get Started")),)
+              onPressed: (){}, child: Text("Get Started",style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 18,
+            color: Colors.white,
+          ),)),)
         ],
       ),
       )),
