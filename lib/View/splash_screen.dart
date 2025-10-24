@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:skymood/Utils/colors.dart';
 import 'package:skymood/View/home_screen.dart';
@@ -10,7 +13,28 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  late Timer _timer ;
   @override
+  void initState() {
+  _timer =Timer(Duration(seconds: 3), (){
+    // check if the widget is still mpunted before naviagtion
+    if(mounted){
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => WeatherAppHomeScreen(),),);
+    }
+  });
+    super.initState();
+  }
+
+
+  @override
+  void dispose() {
+_timer.cancel();
+    super.dispose();
+  }
+
+  @override
+
+
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
@@ -54,7 +78,7 @@ class _SplashScreenState extends State<SplashScreen> {
               }, child: Text("Get Started",style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 18,
-            color: Colors.white,
+            color: Theme.of(context).colorScheme.secondary,
           ),)),)
         ],
       ),
