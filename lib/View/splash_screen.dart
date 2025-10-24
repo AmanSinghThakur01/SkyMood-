@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:skymood/Utils/colors.dart';
+import 'package:skymood/View/home_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -12,7 +13,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Theme.of(context).primaryColor,
       body: SafeArea(child: Padding(padding: EdgeInsets.symmetric(vertical: 40),
       child: Column(
         children: [
@@ -23,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
             fontWeight: FontWeight.bold,
             letterSpacing: -0.5,
             height: 1.2,
-            color: Colors.white,
+            color: Theme.of(context).colorScheme.secondary,
 
           ),
           ),
@@ -48,7 +49,9 @@ class _SplashScreenState extends State<SplashScreen> {
                   borderRadius: BorderRadius.circular(20),
                 )
               ),
-              onPressed: (){}, child: Text("Get Started",style: TextStyle(
+              onPressed: (){
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => WeatherAppHomeScreen(),));
+              }, child: Text("Get Started",style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 18,
             color: Colors.white,
